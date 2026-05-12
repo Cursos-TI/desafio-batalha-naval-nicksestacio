@@ -1,6 +1,9 @@
 #include <stdio.h>
 
 int main() {
+    int tabuleiro[10][10] = {0};
+    int i, j;
+
     int navioVertical[3][2] = {
         {1, 1},
         {2, 1},
@@ -13,15 +16,33 @@ int main() {
         {5, 5}
     };
 
-    printf("Coordenadas do Navio Vertical:\n");
-    printf("Parte 1: X = %d, Y = %d\n", navioVertical[0][0], navioVertical[0][1]);
-    printf("Parte 2: X = %d, Y = %d\n", navioVertical[1][0], navioVertical[1][1]);
-    printf("Parte 3: X = %d, Y = %d\n", navioVertical[2][0], navioVertical[2][1]);
+    int navioDiagonal1[3][2] = {
+        {0, 0},
+        {1, 1},
+        {2, 2}
+    };
 
-    printf("\nCoordenadas do Navio Horizontal:\n");
-    printf("Parte 1: X = %d, Y = %d\n", navioHorizontal[0][0], navioHorizontal[0][1]);
-    printf("Parte 2: X = %d, Y = %d\n", navioHorizontal[1][0], navioHorizontal[1][1]);
-    printf("Parte 3: X = %d, Y = %d\n", navioHorizontal[2][0], navioHorizontal[2][1]);
+    int navioDiagonal2[3][2] = {
+        {7, 2},
+        {8, 3},
+        {9, 4}
+    };
+
+    for (i = 0; i < 3; i++) {
+        tabuleiro[navioVertical[i][0]][navioVertical[i][1]] = 3;
+        tabuleiro[navioHorizontal[i][0]][navioHorizontal[i][1]] = 3;
+        tabuleiro[navioDiagonal1[i][0]][navioDiagonal1[i][1]] = 3;
+        tabuleiro[navioDiagonal2[i][0]][navioDiagonal2[i][1]] = 3;
+    }
+
+    printf("Tabuleiro Batalha Naval:\n\n");
+
+    for (i = 0; i < 10; i++) {
+        for (j = 0; j < 10; j++) {
+            printf("%d ", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }
